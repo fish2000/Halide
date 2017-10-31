@@ -41,17 +41,22 @@ HalideExtern_1(const Variable *, record_varying, const Variable *);
 
 // This visitor inserts the above function in the IR tree.
 class CountVarying : public IRMutator2 {
-    using IRMutator2::visit;
     
-    CountVarying() = default;
+    public:
+        CountVarying() noexcept = default;
+
     
-    Expr visit(const Variable *op) override {
-        Expr expr = IRMutator2::visit(op);
-        if (ends_with(op->name, ".varying")) {
-            expr = record_varying(op);
+    private:
+        using IRMutator2::visit;
+        
+        Expr visit(const Variable *op) override {
+            Expr expr = IRMutator2::visit(op);
+            if (ends_with(op->name, ".varying")) {
+                expr = record_varying(op);
+            }
+            return expr;
         }
-        return expr;
-    }
+    
 };
 
 bool perform_test(const char *label, const Target target, Func f, int expected_nvarying, float tol, std::function<float(int x, int y, int c)> expected_val) {
