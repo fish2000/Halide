@@ -123,6 +123,8 @@ public:
  */
 class IRMutator2 {
 public:
+    EXPORT constexpr IRMutator2() noexcept = default;
+    
     EXPORT virtual ~IRMutator2();
 
     /** This is the main interface for using a mutator. Also call
