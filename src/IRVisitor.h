@@ -21,6 +21,7 @@ namespace Internal {
  */
 class IRVisitor {
 public:
+    EXPORT IRVisitor() noexcept;
     EXPORT virtual ~IRVisitor();
     EXPORT virtual void visit(const IntImm *);
     EXPORT virtual void visit(const UIntImm *);
