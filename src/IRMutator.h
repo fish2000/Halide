@@ -121,7 +121,7 @@ public:
  * the appropriate visit() method and then return the value of expr or
  * stmt after the call to visit.
  */
-class IRMutator2 {
+class IRMutator2 : public IRVisitor {
 public:
     EXPORT constexpr IRMutator2() noexcept = default;
     
