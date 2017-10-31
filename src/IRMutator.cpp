@@ -397,6 +397,8 @@ Expr IRGraphMutator::mutate(const Expr &e) {
     return new_e;
 }
 
+IRMutator2::IRMutator2() noexcept {}
+
 IRMutator2::~IRMutator2() {
 }
 
