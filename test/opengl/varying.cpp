@@ -42,7 +42,9 @@ HalideExtern_1(const Variable *, record_varying, const Variable *);
 // This visitor inserts the above function in the IR tree.
 class CountVarying : public IRMutator2 {
     using IRMutator2::visit;
-
+    
+    CountVarying() = default;
+    
     Expr visit(const Variable *op) override {
         Expr expr = IRMutator2::visit(op);
         if (ends_with(op->name, ".varying")) {
@@ -58,7 +60,7 @@ bool perform_test(const char *label, const Target target, Func f, int expected_n
     Buffer<float> out(8, 8, 3);
 
     varyings.clear();
-    f.add_custom_lowering_pass(new CountVarying);
+    f.add_custom_lowering_pass(new CountVarying());
     f.realize(out, target);
 
     // Check for the correct number of varying attributes
