@@ -3,6 +3,8 @@
 namespace Halide {
 namespace Internal {
 
+IRVisitor::IRVisitor() noexcept {}
+
 IRVisitor::~IRVisitor() {
 }
 
