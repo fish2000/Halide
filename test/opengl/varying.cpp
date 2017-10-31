@@ -46,7 +46,7 @@ class CountVarying : public IRMutator2 {
         CountVarying() noexcept = default;
 
     
-    private:
+    public:
         using IRMutator2::visit;
         
         Expr visit(const Variable *op) override {
